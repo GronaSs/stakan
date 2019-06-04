@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		img {
+			position: absolute;
+		}
+
+		.stakan { 
+			transform: rotate(180deg);
+			margin-top: 5%;
+			width: 23%
+		 }
+	</style>
+</head>
+<body>
+	<button class="reload" style="position: absolute; margin-left: 43%">RELOAD</button>
+
+	<!--<img class="bones" src="bones.png" alt="" style=" margin-left: 15%; margin-top: 33%">
+    <img class="bones" src="bones.png" alt="" style=" margin-left: 43%; margin-top: 33%">-->
+	<img class="bones" src="bones.png" alt="" style=" margin-left: 70%; margin-top: 33%">
+
+	<img class="stakan" src="stak.png" style=" margin-left: 10%; ">
+	<img class="stakan" src="stak.png" style=" margin-left: 35%; ">
+	<img class="stakan" src="stak.png" style=" margin-left: 60%; ">
+
+</body>
+<script>
+	let elems = document.querySelector(".bones");
+	let stak = document.querySelectorAll(".stakan");
+	let array = ["15%","40%","70%"];
+	let interv = function(){
+		let rand = Math.random()*3 //случайное число до 5
+		let round = Math.round(rand) //округлить число 
+		elems.style.marginLeft = array[round];
+}
+
+let x = setInterval(interv,50);
+
+	let bone = function(){
+		clearInterval(x);
+		elems.style.display = "none";
+		for(let index = 0; index<3; index = index + 1){//цикл
+			stak[index].style.marginTop = "20%";
+		}
+		stak[0].onclick = function(){
+			stak[0].style.marginTop = "0%";
+			alert("Не правильно!");
+		}
+		stak[1].onclick = function(){
+			stak[1].style.marginTop = "0%";
+			alert("Не правильно!");
+		}
+		stak[2].onclick = function(){
+			stak[2].style.marginTop = "0%";
+			alert("Правильно!");
+			elems.style.display = "block"
+		}
+	}
+
+setTimeout(bone,5000)
+
+</script>
+</html>
